@@ -143,25 +143,11 @@ a { text-decoration: none; color: inherit; }
   max-width: 420px;
 }
 .store-badge {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  background: #000000;
-  border: 1px solid #000;
-  border-radius: 14px;
-  padding: 14px 26px;
+  display: inline-flex;
   transition: transform .15s ease, opacity .15s ease;
 }
 .store-badge:hover { transform: translateY(-2px); opacity: .9; }
-.store-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-  color: #ffffff;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-.store-line1 { font-size: 15px; font-weight: 400; letter-spacing: .2px; }
-.store-line2 { font-size: 30px; font-weight: 600; letter-spacing: -0.5px; margin-top: 4px; }
+.store-badge img { display: block; height: auto; }
 
 /* Footer */
 .site-footer {

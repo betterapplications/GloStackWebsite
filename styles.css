@@ -147,7 +147,7 @@ a { text-decoration: none; color: inherit; }
   transition: transform .15s ease, opacity .15s ease;
 }
 .store-badge:hover { transform: translateY(-2px); opacity: .9; }
-.store-badge svg { display: block; width: 200px; height: auto; }
+.store-badge img { display: block; width: 200px; height: auto; }
 
 /* Footer */
 .site-footer {

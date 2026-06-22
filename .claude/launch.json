@@ -4,7 +4,7 @@
     {
       "name": "site",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8765"],
+      "runtimeArgs": ["-c", "import functools,http.server,socketserver; d='/Users/kashishdewnani/Documents/Kash/ios apps/GloStackWebsite'; h=functools.partial(http.server.SimpleHTTPRequestHandler, directory=d); socketserver.TCPServer(('',8765), h).serve_forever()"],
       "port": 8765
     }
   ]

@@ -2,7 +2,8 @@
    Recreated from the high-fidelity design handoff. */
 
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+html, body { margin: 0; padding: 0; overflow-x: hidden; }
+img { max-width: 100%; }
 body {
   font-family: 'Poppins', system-ui, -apple-system, sans-serif;
   background: #ffffff;
@@ -170,23 +171,34 @@ a { text-decoration: none; color: inherit; }
 .footer-links a:hover { color: #2a2a2a; }
 .footer-copy { font-size: 14px; color: #8a8a8a; }
 
-/* Responsive scaling of the phones cluster + spacing */
+/* Responsive scaling of the phones cluster + spacing.
+   Cluster box = 720*s x 780*s so the scaled content exactly fills it.
+   Each breakpoint's size is chosen to fit the NARROW end of its range
+   (incl. side padding) so there is never horizontal overflow. */
 @media (max-width: 980px) {
   .main-panel { gap: 24px; padding: 48px 24px; }
 }
 @media (max-width: 860px) {
-  .phone-cluster { width: 576px; height: 624px; }
-  .phone-cluster-scale { transform: scale(.8); }
+  /* range 601–860px; s=.75 -> 540x585 fits 601 (avail ~553) */
+  .phone-cluster { width: 540px; height: 585px; }
+  .phone-cluster-scale { transform: scale(.75); }
 }
 @media (max-width: 600px) {
-  .phone-cluster { width: 454px; height: 492px; }
-  .phone-cluster-scale { transform: scale(.63); }
+  /* range 481–600px; s=.60 -> 432x468 fits 481 (avail ~449) */
+  .phone-cluster { width: 432px; height: 468px; }
+  .phone-cluster-scale { transform: scale(.60); }
   .site-header { padding: 20px 16px; }
-  .main-panel { padding: 36px 16px; }
-  .store-line2 { font-size: 26px; }
+  .main-panel { padding: 36px 16px; gap: 28px; }
 }
 @media (max-width: 480px) {
-  .phone-cluster { width: 360px; height: 390px; }
-  .phone-cluster-scale { transform: scale(.5); }
+  /* range 361–480px; s=.45 -> 324x351 fits 361 (avail ~329) */
+  .phone-cluster { width: 324px; height: 351px; }
+  .phone-cluster-scale { transform: scale(.45); }
   .brand-word { font-size: 24px; }
+}
+@media (max-width: 360px) {
+  /* range 320–360px; s=.385 -> 277x300 fits 320 (avail ~288) */
+  .phone-cluster { width: 277px; height: 300px; }
+  .phone-cluster-scale { transform: scale(.385); }
+  .store-badge img { width: 180px; }
 }

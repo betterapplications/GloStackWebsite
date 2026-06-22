@@ -25,9 +25,9 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   justify-content: center;
 }
-.brand { display: flex; align-items: center; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; }
 .brand-logo {
-  width: 48px; height: 48px;
+  height: 34px; width: auto;
   object-fit: contain;
   display: block;
 }
@@ -147,7 +147,7 @@ a { text-decoration: none; color: inherit; }
   transition: transform .15s ease, opacity .15s ease;
 }
 .store-badge:hover { transform: translateY(-2px); opacity: .9; }
-.store-badge img { display: block; height: auto; }
+.store-badge svg { display: block; width: 200px; height: auto; }
 
 /* Footer */
 .site-footer {

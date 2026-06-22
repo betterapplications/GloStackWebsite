@@ -27,7 +27,7 @@ a { text-decoration: none; color: inherit; }
 }
 .brand { display: flex; align-items: center; gap: 10px; }
 .brand-logo {
-  height: 34px; width: auto;
+  height: 30px; width: auto;
   object-fit: contain;
   display: block;
 }

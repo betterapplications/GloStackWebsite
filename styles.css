@@ -25,11 +25,11 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   justify-content: center;
 }
-.brand { display: flex; align-items: center; gap: 14px; }
-.brand-dot {
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  background: #f47521;
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-logo {
+  width: 48px; height: 48px;
+  object-fit: contain;
+  display: block;
 }
 .brand-word {
   font-size: 30px;

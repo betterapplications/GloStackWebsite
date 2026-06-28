@@ -114,25 +114,12 @@ a { text-decoration: none; color: inherit; }
   border-radius: 38px;
   overflow: hidden;
 }
-.notch {
-  position: absolute;
-  top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 130px; height: 26px;
-  background: #161616;
-  border-radius: 0 0 16px 16px;
-  z-index: 3;
-}
 .screen-img {
   width: 100%; height: 100%;
-  background-image: repeating-linear-gradient(45deg, #f3f3f3, #f3f3f3 12px, #eaeaea 12px, #eaeaea 24px);
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
 }
-.screen-img span { font-family: ui-monospace, monospace; font-size: 13px; color: #9a9a9a; }
 
 /* App Store badge */
 .badge-col {

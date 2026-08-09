@@ -46,9 +46,65 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 60px;
-  padding: 60px 40px;
-  flex-wrap: wrap;
+  padding: 56px 40px;
+}
+
+/* Hero: copy beside the phones on desktop, stacked below ~900px. */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  width: 100%;
+  max-width: 1240px;
+}
+.hero-copy { flex: 0 1 460px; min-width: 0; }
+.hero-title {
+  margin: 0;
+  font-size: clamp(32px, 3.4vw, 46px);
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -1px;
+  color: #2a2a2a;
+  text-wrap: balance;
+}
+.hero-accent { color: #7c3aed; }
+.hero-sub {
+  margin: 20px 0 0;
+  font-size: clamp(15px, 1.35vw, 18px);
+  line-height: 1.65;
+  color: #6a6a6a;
+  max-width: 46ch;
+}
+.hero-points {
+  list-style: none;
+  margin: 26px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+.hero-points li {
+  position: relative;
+  padding-left: 30px;
+  font-size: 15px;
+  color: #4a4a4a;
+}
+/* Check mark drawn in CSS so the list needs no icon asset. */
+.hero-points li::before {
+  content: "";
+  position: absolute;
+  left: 6px; top: 6px;
+  width: 6px; height: 11px;
+  border: solid #7c3aed;
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+.hero-cta { margin-top: 34px; }
+.hero-note {
+  margin: 14px 0 0;
+  font-size: 13px;
+  color: #8a8a8a;
 }
 
 /* Phones cluster.
@@ -142,14 +198,6 @@ a { text-decoration: none; color: inherit; }
 }
 
 /* App Store badge */
-.badge-col {
-  flex: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 36px;
-  max-width: 420px;
-}
 .store-badge {
   display: inline-flex;
   transition: transform .15s ease, opacity .15s ease;
@@ -180,49 +228,66 @@ a { text-decoration: none; color: inherit; }
 
 /* Responsive scaling of the phones cluster + spacing.
    Cluster box = 720*s x 780*s so the scaled content exactly fills it.
-   Each breakpoint's size is chosen to fit the NARROW end of its range
-   (incl. side padding) so there is never horizontal overflow. */
-@media (max-width: 980px) {
-  /* range 861–980px; s=1.1 -> 792x858 fits 861 (avail ~813) */
-  .main-panel { gap: 24px; padding: 48px 24px; }
-  .phone-cluster { width: 792px; height: 858px; }
-  .phone-cluster-scale { transform: scale(1.1); }
+   Above 900px the cluster shares the row with the hero copy, so each size is
+   chosen to fit alongside it at the NARROW end of its range (incl. gap and
+   page padding). Below 900px the hero stacks and the cluster stands alone. */
+
+/* --- Two-column ranges ------------------------------------------------- */
+@media (min-width: 1200px) {
+  /* 460 copy + 48 gap + 576 cluster + 80 padding = 1164 fits 1200 */
+  .phone-cluster { width: 576px; height: 624px; }
+  .phone-cluster-scale { transform: scale(.80); }
 }
-@media (max-width: 860px) {
-  /* range 601–860px; s=.75 -> 540x585 fits 601 (avail ~553) */
+@media (min-width: 900px) and (max-width: 1199px) {
+  /* 420 copy + 40 gap + 446 cluster + 64 padding = 970 fits 1024 */
+  .main-panel { padding: 48px 32px; }
+  .hero { gap: 40px; }
+  .hero-copy { flex-basis: 420px; }
+  .phone-cluster { width: 446px; height: 484px; }
+  .phone-cluster-scale { transform: scale(.62); }
+}
+@media (min-width: 900px) and (max-width: 1023px) {
+  /* 340 copy + 32 gap + 360 cluster + 64 padding = 796 fits 900 */
+  .hero { gap: 32px; }
+  .hero-copy { flex-basis: 340px; }
+  .phone-cluster { width: 360px; height: 390px; }
+  .phone-cluster-scale { transform: scale(.50); }
+}
+
+/* --- Stacked ranges ---------------------------------------------------- */
+@media (max-width: 899px) {
+  .hero { flex-direction: column; gap: 40px; }
+  .hero-copy { flex: none; width: 100%; max-width: 560px; text-align: center; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  /* Centre the list as one block so every check mark shares a left edge,
+     rather than each item centring on its own width. */
+  .hero-points {
+    width: max-content;
+    max-width: 100%;
+    margin-left: auto; margin-right: auto;
+  }
+  .hero-points li { text-align: left; }
+  .hero-cta { display: flex; flex-direction: column; align-items: center; }
+  /* s=.75 -> 540x585 fits 601 (avail ~553) */
   .phone-cluster { width: 540px; height: 585px; }
   .phone-cluster-scale { transform: scale(.75); }
 }
 @media (max-width: 600px) {
-  /* range 481–600px; s=.60 -> 432x468 fits 481 (avail ~449) */
+  /* s=.60 -> 432x468 fits 481 (avail ~449) */
   .phone-cluster { width: 432px; height: 468px; }
   .phone-cluster-scale { transform: scale(.60); }
   .site-header { padding: 20px 16px; }
-  .main-panel { padding: 36px 16px; gap: 28px; }
+  .main-panel { padding: 40px 16px; }
 }
 @media (max-width: 480px) {
-  /* range 361–480px; s=.45 -> 324x351 fits 361 (avail ~329) */
+  /* s=.45 -> 324x351 fits 361 (avail ~329) */
   .phone-cluster { width: 324px; height: 351px; }
   .phone-cluster-scale { transform: scale(.45); }
   .brand-word { font-size: 24px; }
 }
 @media (max-width: 360px) {
-  /* range 320–360px; s=.385 -> 277x300 fits 320 (avail ~288) */
+  /* s=.385 -> 277x300 fits 320 (avail ~288) */
   .phone-cluster { width: 277px; height: 300px; }
   .phone-cluster-scale { transform: scale(.385); }
   .store-badge img { width: 180px; }
-}
-
-/* Larger phones when there's room. The App Store badge wraps below the
-   phones on the narrower of these ranges, which flexbox handles
-   automatically. Each size fits the NARROW end of its range. */
-@media (min-width: 1024px) {
-  /* s=1.3 -> 936x1014 fits 1024 (avail ~944) */
-  .phone-cluster { width: 936px; height: 1014px; }
-  .phone-cluster-scale { transform: scale(1.3); }
-}
-@media (min-width: 1200px) {
-  /* s=1.5 -> 1080x1170 fits 1200 (avail ~1120) */
-  .phone-cluster { width: 1080px; height: 1170px; }
-  .phone-cluster-scale { transform: scale(1.5); }
 }

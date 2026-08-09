@@ -68,7 +68,9 @@ a { text-decoration: none; color: inherit; }
   color: #2a2a2a;
   text-wrap: balance;
 }
-.hero-accent { color: #7c3aed; }
+/* Sampled from the "One Place" headline in the App Store screenshots, so the
+   site's accent matches the artwork exactly. */
+.hero-accent { color: #974ead; }
 .hero-sub {
   margin: 20px 0 0;
   font-size: clamp(15px, 1.35vw, 18px);
@@ -101,7 +103,7 @@ a { text-decoration: none; color: inherit; }
   left: 0; top: -2px;
   width: 27px; height: 27px;
   border-radius: 50%;
-  background: #7c3aed;
+  background: #974ead;
 }
 .hero-points li::after {
   content: "";

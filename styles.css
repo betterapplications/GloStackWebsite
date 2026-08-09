@@ -73,15 +73,17 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   justify-content: center;
 }
-.card span { font-family: ui-monospace, monospace; font-size: 11px; }
+/* Placeholder labels ("Orange", "Yellow", ...) are dev aids — the cards are
+   decorative only, so the text stays hidden while the shapes show. */
+.card span { display: none; }
 .card-orange {
-  top: 180px; left: 10px; width: 150px; height: 140px;
+  top: 150px; left: 0; width: 170px; height: 160px;
   transform: rotate(-12deg);
   background: repeating-linear-gradient(45deg, #f6c9a8, #f6c9a8 9px, #f2bd97 9px, #f2bd97 18px);
 }
 .card-orange span { color: #8a5a36; }
 .card-yellow {
-  top: 560px; left: 30px; width: 150px; height: 150px;
+  top: 545px; left: 8px; width: 165px; height: 165px;
   transform: rotate(8deg);
   background: repeating-linear-gradient(45deg, #f2d59a, #f2d59a 9px, #ecca85 9px, #ecca85 18px);
 }
@@ -101,12 +103,12 @@ a { text-decoration: none; color: inherit; }
 
 /* Phones */
 .phone { position: absolute; width: 330px; height: 680px; }
-.phone-left { top: 60px; left: 20px; transform: rotate(-4deg); z-index: 2; }
+.phone-left { top: 60px; left: 88px; transform: rotate(-4deg); z-index: 2; }
 /* Transparent cut-out of the device and its floating cards, so it layers in
    front of the left phone without a panel edge clipping anything. Width is set
    so the device inside it reads at roughly the same size as the left phone. */
 .phone-right {
-  top: 70px; left: 315px;
+  top: 70px; left: 340px;
   width: 380px; height: auto;
   transform: rotate(2deg);
   z-index: 3;

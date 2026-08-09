@@ -78,34 +78,41 @@ a { text-decoration: none; color: inherit; }
 }
 .hero-points {
   list-style: none;
-  margin: 26px 0 0;
+  margin: 28px 0 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 11px;
+  gap: 16px;
 }
 .hero-points li {
   position: relative;
-  padding-left: 30px;
-  font-size: 15px;
-  color: #4a4a4a;
+  padding-left: 42px;
+  font-size: 16px;
+  line-height: 1.45;
+  color: #2a2a2a;
 }
-/* Check mark drawn in CSS so the list needs no icon asset. */
+/* Filled disc + tick, both drawn in CSS so the list needs no icon asset.
+   Anchored to the first line, not the item's centre, so a wrapped item on
+   narrow screens keeps its mark beside the first line rather than floating
+   halfway down the block. */
 .hero-points li::before {
   content: "";
   position: absolute;
-  left: 6px; top: 6px;
+  left: 0; top: -2px;
+  width: 27px; height: 27px;
+  border-radius: 50%;
+  background: #7c3aed;
+}
+.hero-points li::after {
+  content: "";
+  position: absolute;
+  left: 10px; top: 6px;
   width: 6px; height: 11px;
-  border: solid #7c3aed;
+  border: solid #ffffff;
   border-width: 0 2.5px 2.5px 0;
   transform: rotate(45deg);
 }
 .hero-cta { margin-top: 34px; }
-.hero-note {
-  margin: 14px 0 0;
-  font-size: 13px;
-  color: #8a8a8a;
-}
 
 /* Phones cluster.
    The inner coordinate space is fixed at 720x780; the cluster is rendered

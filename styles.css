@@ -115,16 +115,17 @@ a { text-decoration: none; color: inherit; }
 .hero-cta { margin-top: 34px; }
 
 /* Phones cluster.
-   The inner coordinate space is fixed at 720x780; the cluster is rendered
-   larger via transform: scale() and the outer box is sized to match
-   (720*s x 780*s) so the scaled content exactly fills it. */
-.phone-cluster { position: relative; flex: none; width: 864px; height: 936px; }
+   The inner coordinate space is fixed at 780x780; the cluster is rendered
+   at another size via transform: scale() and the outer box is sized to match
+   (780*s square) so the scaled content exactly fills it. The extra width over
+   the phones themselves is the margin the floating cards sit in on each side. */
+.phone-cluster { position: relative; flex: none; width: 585px; height: 585px; }
 .phone-cluster-scale {
   position: absolute;
   top: 0; left: 0;
-  width: 720px; height: 780px;
+  width: 780px; height: 780px;
   transform-origin: top left;
-  transform: scale(1.2);
+  transform: scale(.75);
 }
 
 /* Floating cards */
@@ -140,25 +141,25 @@ a { text-decoration: none; color: inherit; }
    decorative only, so the text stays hidden while the shapes show. */
 .card span { display: none; }
 .card-orange {
-  top: 150px; left: 0; width: 170px; height: 160px;
+  top: 150px; left: 48px; width: 170px; height: 160px;
   transform: rotate(-12deg);
   background: repeating-linear-gradient(45deg, #f6c9a8, #f6c9a8 9px, #f2bd97 9px, #f2bd97 18px);
 }
 .card-orange span { color: #8a5a36; }
 .card-yellow {
-  top: 545px; left: 8px; width: 165px; height: 165px;
+  top: 545px; left: 56px; width: 165px; height: 165px;
   transform: rotate(8deg);
   background: repeating-linear-gradient(45deg, #f2d59a, #f2d59a 9px, #ecca85 9px, #ecca85 18px);
 }
 .card-yellow span { color: #8a6f2e; }
 .card-blue {
-  top: 300px; right: 20px; width: 160px; height: 150px;
+  top: 290px; right: 10px; width: 160px; height: 150px;
   transform: rotate(11deg);
   background: repeating-linear-gradient(45deg, #9cc2f0, #9cc2f0 9px, #8ab6ec 9px, #8ab6ec 18px);
 }
 .card-blue span { color: #3a5d8a; }
 .card-purple {
-  top: 540px; right: 15px; width: 170px; height: 130px;
+  top: 530px; right: 18px; width: 170px; height: 130px;
   transform: rotate(-8deg);
   background: repeating-linear-gradient(45deg, #c8b6ec, #c8b6ec 9px, #bba6e8 9px, #bba6e8 18px);
 }
@@ -167,12 +168,12 @@ a { text-decoration: none; color: inherit; }
 /* Phones. Both slots hold pre-rendered panels that include their own device
    frame, so height follows each image's own ratio. */
 .phone { position: absolute; width: 330px; height: auto; }
-.phone-left { top: 60px; left: 88px; width: 340px; transform: rotate(-4deg); z-index: 2; }
+.phone-left { top: 60px; left: 104px; width: 340px; transform: rotate(-4deg); z-index: 2; }
 /* Transparent cut-out of the device and its floating cards, so it layers in
    front of the left phone without a panel edge clipping anything. Width is set
    so the device inside it reads at roughly the same size as the left phone. */
 .phone-right {
-  top: 70px; left: 340px;
+  top: 70px; left: 352px;
   width: 380px; height: auto;
   transform: rotate(2deg);
   z-index: 3;
@@ -222,24 +223,24 @@ a { text-decoration: none; color: inherit; }
 
 /* --- Two-column ranges ------------------------------------------------- */
 @media (min-width: 1200px) {
-  /* 460 copy + 48 gap + 576 cluster + 80 padding = 1164 fits 1200 */
-  .phone-cluster { width: 576px; height: 624px; }
-  .phone-cluster-scale { transform: scale(.80); }
+  /* 460 copy + 48 gap + 585 cluster + 80 padding = 1173 fits 1200 */
+  .phone-cluster { width: 585px; height: 585px; }
+  .phone-cluster-scale { transform: scale(.75); }
 }
 @media (min-width: 900px) and (max-width: 1199px) {
-  /* 420 copy + 40 gap + 446 cluster + 64 padding = 970 fits 1024 */
+  /* 420 copy + 40 gap + 452 cluster + 64 padding = 976 fits 1024 */
   .main-panel { padding: 48px 32px; }
   .hero { gap: 40px; }
   .hero-copy { flex-basis: 420px; }
-  .phone-cluster { width: 446px; height: 484px; }
-  .phone-cluster-scale { transform: scale(.62); }
+  .phone-cluster { width: 452px; height: 452px; }
+  .phone-cluster-scale { transform: scale(.58); }
 }
 @media (min-width: 900px) and (max-width: 1023px) {
-  /* 340 copy + 32 gap + 360 cluster + 64 padding = 796 fits 900 */
+  /* 340 copy + 32 gap + 359 cluster + 64 padding = 795 fits 900 */
   .hero { gap: 32px; }
   .hero-copy { flex-basis: 340px; }
-  .phone-cluster { width: 360px; height: 390px; }
-  .phone-cluster-scale { transform: scale(.50); }
+  .phone-cluster { width: 359px; height: 359px; }
+  .phone-cluster-scale { transform: scale(.46); }
 }
 
 /* --- Stacked ranges ---------------------------------------------------- */
@@ -256,26 +257,26 @@ a { text-decoration: none; color: inherit; }
   }
   .hero-points li { text-align: left; }
   .hero-cta { display: flex; flex-direction: column; align-items: center; }
-  /* s=.75 -> 540x585 fits 601 (avail ~553) */
-  .phone-cluster { width: 540px; height: 585px; }
-  .phone-cluster-scale { transform: scale(.75); }
+  /* s=.70 -> 546 square fits 601 (avail ~553) */
+  .phone-cluster { width: 546px; height: 546px; }
+  .phone-cluster-scale { transform: scale(.70); }
 }
 @media (max-width: 600px) {
-  /* s=.60 -> 432x468 fits 481 (avail ~449) */
-  .phone-cluster { width: 432px; height: 468px; }
-  .phone-cluster-scale { transform: scale(.60); }
+  /* s=.57 -> 445 square fits 481 (avail ~449) */
+  .phone-cluster { width: 445px; height: 445px; }
+  .phone-cluster-scale { transform: scale(.57); }
   .site-header { padding: 20px 16px; }
   .main-panel { padding: 40px 16px; }
 }
 @media (max-width: 480px) {
-  /* s=.45 -> 324x351 fits 361 (avail ~329) */
-  .phone-cluster { width: 324px; height: 351px; }
-  .phone-cluster-scale { transform: scale(.45); }
+  /* s=.42 -> 328 square fits 361 (avail ~329) */
+  .phone-cluster { width: 328px; height: 328px; }
+  .phone-cluster-scale { transform: scale(.42); }
   .brand-word { font-size: 24px; }
 }
 @media (max-width: 360px) {
-  /* s=.385 -> 277x300 fits 320 (avail ~288) */
-  .phone-cluster { width: 277px; height: 300px; }
-  .phone-cluster-scale { transform: scale(.385); }
+  /* s=.365 -> 285 square fits 320 (avail ~288) */
+  .phone-cluster { width: 285px; height: 285px; }
+  .phone-cluster-scale { transform: scale(.365); }
   .store-badge img { width: 180px; }
 }
